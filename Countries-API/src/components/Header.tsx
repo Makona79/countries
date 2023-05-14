@@ -11,7 +11,7 @@ const Header = () => {
 	return (
 		<header className='header'>
 			<div className='container'>
-				<div className="wrapper">
+				<div className="header__wrapper">
 					<a href="/" className='title-link'>
 						<h2 className="title">Where is the world?</h2>
 					</a>

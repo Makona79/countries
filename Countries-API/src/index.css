@@ -54,7 +54,7 @@ body {
 	padding: 0 2rem;
 }
 
-.wrapper {
+.header__wrapper {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
