@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Search from './Search'
 import CustomSelect from './CustomSelect';
 
+
 const Controls = () => {
 	const [search, setSearch] = useState('');
 

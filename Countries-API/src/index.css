@@ -79,3 +79,11 @@ body {
 	display: flex;
 	gap: 10px;
 }
+
+.wrapper {
+	padding: 2rem 0;
+
+	@media (min-width: 767px) {
+		padding: 4rem 0;
+	}
+}

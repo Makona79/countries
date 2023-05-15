@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from './components/Header'
 import './App.css'
 import Controls from './components/Controls'
+import Main from './components/Main'
 
 
 function App() {
@@ -10,7 +11,9 @@ function App() {
 	return (
 		<>
 			<Header />
-			<Controls/>
+			<Main>
+				<Controls />
+			</Main>
 		</>
 	)
 }
