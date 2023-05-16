@@ -1,9 +1,9 @@
 import React from 'react'
 
-interface Props {
+export interface PropsChildren {
 	children: JSX.Element[] | JSX.Element
 }
-const Main = ({ children }: Props) => {
+const Main = ({ children }: PropsChildren) => {
 	return (
 		<div className='wrapper'>
 			<div className="container">
