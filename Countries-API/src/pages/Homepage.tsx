@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { ALL_COUNTRIES } from '../config'
@@ -19,17 +19,38 @@ export type CountriesType = {
 // }
 
 const Homepage = ({ countries, setCountries }: any) => {
+	const [filteredCountries, setFilteredCountries] = useState(countries);
 	const navigate = useNavigate();
 
+
+	console.log(countries.length)
+	console.log(filteredCountries.length)
+
+	const handleSearch = (search: any, region: any) => {
+		let searchData = [...countries];
+		if (region) {
+			searchData = searchData.filter(c => c.region.includes(region))
+		}
+		if (search) {
+			searchData = searchData.filter(c => c.name.toLowerCase().includes(search.toLowerCase()))
+		}
+		setFilteredCountries(searchData);
+	}
 	useEffect(() => {
-		if (!countries.length)
+		if (!countries.length) {
 			axios.get(ALL_COUNTRIES).then(({ data }) => setCountries(data))
-	}, [])
+		}
+	}, []);
+
+	useEffect(() => {
+		handleSearch('', '')
+	}, [countries])
+
 	return (
 		<>
-			<Controls />
+			<Controls onSearch={handleSearch} />
 			<List>
-				{countries.map((c: any) => {
+				{filteredCountries.map((c: any) => {
 					const countryInfo = {
 						img: c.flags.png,
 						name: c.name,

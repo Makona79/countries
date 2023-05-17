@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { IoMoon, IoMoonOutline } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 	const [theme, setTheme] = useState('light');
@@ -12,9 +13,9 @@ const Header = () => {
 		<header className='header'>
 			<div className='container'>
 				<div className="header__wrapper">
-					<a href="/" className='title-link'>
+					<Link to="/" className='title-link'>
 						<h2 className="title">Where is the world?</h2>
-					</a>
+					</Link>
 					<div className="modeswitcher" onClick={toggleTheme}>
 						{theme === 'light' ? (
 							<IoMoonOutline />

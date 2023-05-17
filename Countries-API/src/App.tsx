@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound';
 
 function App() {
 	const [countries, setCountries] = useState<CountriesType[]>([]);
-	console.log(countries);
+
 
 	return (
 		<>
@@ -20,7 +20,7 @@ function App() {
 					<Route path="/country/:name" element={<Detailes />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
-				
+
 			</Main>
 		</>
 	)

@@ -1,11 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Search from './Search'
 import CustomSelect from './CustomSelect';
 
 
-const Controls = () => {
+const Controls = ({ onSearch }: any) => {
 	const [search, setSearch] = useState('');
 
+	useEffect(() => {
+		// let regionValue = region?.value || '' ; 
+
+		onSearch(search);
+	}, [search])
 
 	return (
 		<form className='form'>
