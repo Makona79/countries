@@ -24,7 +24,7 @@ const Info = (props: any) => {
 	useEffect(() => {
 		axios.get(filterByCode(borders)).then(({ data }) => setNeighbors(data.map((c: any) => c.name)))
 	}, [borders])
-
+	console.log(topLevelDomain)
 	return (
 
 		<section className='info__wrapper'>
@@ -54,7 +54,7 @@ const Info = (props: any) => {
 							{capital}
 						</li>
 					</ul>
-					{/* <ul className="info__list">
+					<ul className="info__list">
 						<li className="info__item">
 							<span className="info__item-title">Capital: </span>
 							{topLevelDomain.map((d: any) => (<span key={d}> {d} </span>))}
@@ -65,18 +65,18 @@ const Info = (props: any) => {
 						</li>
 						<li className="info__item">
 							<span className="info__item-title">Capital: </span>
-							{languages.map((l: any) => (<span key={l}> {l} </span>))}
+							{languages.map((l: any) => (<span key={l.name}> {l.name} </span>))}
 						</li>
-					</ul> */}
+					</ul>
 				</div>
 				<div className="info__meta">
-					<b>Border Countries</b>
+					<span className='info__meta-title'>Border Countries</span>
 					{!borders.length ? (
 						<span>There is no border countries</span>
 					) : (
 						<div className="info__tag-group">
 							{neighbors.map((b: any) => (
-								<div key={b} onClick={() => navigate(`/country/${b}`)}>
+								<div className='info__tag' key={b} onClick={() => navigate(`/country/${b}`)}>
 									{b}
 								</div>
 							))}

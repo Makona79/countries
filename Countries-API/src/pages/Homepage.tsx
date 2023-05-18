@@ -22,10 +22,6 @@ const Homepage = ({ countries, setCountries }: any) => {
 	const [filteredCountries, setFilteredCountries] = useState(countries);
 	const navigate = useNavigate();
 
-
-	console.log(countries.length)
-	console.log(filteredCountries.length)
-
 	const handleSearch = (search: any, region: any) => {
 		let searchData = [...countries];
 		if (region) {

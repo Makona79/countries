@@ -178,12 +178,26 @@
 	flex-direction: column;
 	align-items: flex-start;
 
-	/* & > b {
-	  font-weight: var(--fw-bold);
-	} */
-
 	@media (min-width: 767px) {
 		flex-direction: row;
 		align-items: center;
 	}
+}
+
+.info__meta-title {
+	font-weight: var(--fw-bold);
+}
+
+.info__tag-group {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.info__tag {
+	padding: 0 1rem;
+	background-color: var(--colors-ui-base);
+	box-shadow: var(--shadow);
+	line-height: 1.5;
+	cursor: pointer;
 }

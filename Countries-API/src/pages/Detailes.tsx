@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 import { searchByCountry } from '../config';
-import Info from '../components/info';
+import Info from '../components/Info';
+
 
 const Detailes = () => {
 	const { name }: any = useParams();
@@ -18,7 +19,7 @@ const Detailes = () => {
 	return (
 		<div>
 			<button className='button' onClick={() => navigate(-1)}><IoArrowBack />Back</button>
-			{/* {country && <Info navigate={navigate} {...country} />} */}
+			{country && <Info navigate={navigate} {...country} />}
 		</div>
 	)
 }
