@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Select from 'react-select'
-
 
 const options = [
 	{ value: 'Africa', label: 'Africa' },
@@ -9,13 +8,18 @@ const options = [
 	{ value: 'Europe', label: 'Europe' },
 	{ value: 'Oceania', label: 'Oceania' },
 ];
-type Option = {
+
+export type OptionType = {
 	value: string,
 	label: string
 }
 
-const CustomSelect = () => {
-	const [region, setRegion] = useState<Option | null>();
+type CustomSelectType = {
+	region: OptionType | null,
+	setRegion: (value: OptionType) => void
+}
+
+const CustomSelect = ({ region, setRegion }: CustomSelectType) => {
 
 	const customStyle = {
 		control: (base: any) => ({
@@ -50,7 +54,7 @@ const CustomSelect = () => {
 	return (
 		< Select options={options}
 			placeholder="Filter by Region"
-			onChange={(newValue) => setRegion(newValue)}
+			onChange={(option: any) => setRegion(option)}
 			value={region}
 			styles={customStyle}
 		// menuIsOpen

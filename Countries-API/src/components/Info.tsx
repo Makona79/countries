@@ -3,6 +3,21 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { filterByCode } from '../config';
 
+// type InfoPropsType = {
+// 	name:string,
+// 	nativeName:string,
+// 	flag:string,
+// 	capital:string,
+// 	population:number,
+// 	region:string,
+// 	subregion:string,
+// 	topLevelDomain,
+// 	currencies = [],
+// 	languages = [],
+// 	borders = [],
+// 	navigate
+// }
+
 const Info = (props: any) => {
 	const {
 		name,

@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react'
 import Search from './Search'
-import CustomSelect from './CustomSelect';
-
+import CustomSelect, { OptionType } from './CustomSelect';
 
 const Controls = ({ onSearch }: any) => {
 	const [search, setSearch] = useState('');
-
+	const [region, setRegion] = useState<OptionType | null>();
+	console.log(region)
 	useEffect(() => {
-		// let regionValue = region?.value || '' ; 
+		const regionValue = region?.value || '';
 
-		onSearch(search);
-	}, [search])
+		onSearch(search, regionValue);
+	}, [search, region])
 
 	return (
 		<form className='form'>
 			<Search search={search} setSearch={setSearch} />
-			<CustomSelect />
+			<CustomSelect region={region} setRegion={setRegion} />
 		</form>
 	)
 }
