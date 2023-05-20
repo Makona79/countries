@@ -6,23 +6,29 @@ import List from '../components/List'
 import Card from '../components/Card'
 import Controls from '../components/Controls'
 
+type FlagsType = {
+	png: string,
+	svg: string
+}
+
 export type CountriesType = {
-	flags: any,
+	flags: FlagsType,
 	name: string,
-	population: string,
+	population: number,
 	region: string,
 	capital: string
 }
-// type HomePageProps = {
-// 	countries:CountriesType,
+type HomePageProps = {
+	countries: CountriesType[],
+	setCountries: (v: CountriesType[]) => void
+}
 
-// }
-
-const Homepage = ({ countries, setCountries }: any) => {
+const Homepage: React.FC<HomePageProps> = ({ countries, setCountries }) => {
 	const [filteredCountries, setFilteredCountries] = useState(countries);
 	const navigate = useNavigate();
 
-	const handleSearch = (search: any, region: any) => {
+
+	const handleSearch = (search: string, region: string) => {
 		let searchData = [...countries];
 		if (region) {
 			searchData = searchData.filter(c => c.region.includes(region))
@@ -46,7 +52,7 @@ const Homepage = ({ countries, setCountries }: any) => {
 		<>
 			<Controls onSearch={handleSearch} />
 			<List>
-				{filteredCountries.map((c: any) => {
+				{filteredCountries.map((c) => {
 					const countryInfo = {
 						img: c.flags.png,
 						name: c.name,

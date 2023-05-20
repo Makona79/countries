@@ -3,13 +3,17 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 import { searchByCountry } from '../config';
-import Info from '../components/Info';
+import Info, { CountryType } from '../components/Info';
 
+type NameParamsType = {
+	name: string
+}
 
 const Detailes = () => {
-	const { name }: any = useParams();
+	const { name } = useParams<NameParamsType>();
 	const navigate = useNavigate();
-	const [country, setCountry] = useState<any>(null);
+	const [country, setCountry] = useState<CountryType | null>(null);
+
 
 	useEffect(() => {
 		axios.get(searchByCountry(name)).then(({ data }) => setCountry(data[0]))

@@ -2,14 +2,19 @@ import { useState, useEffect } from 'react'
 import Search from './Search'
 import CustomSelect, { OptionType } from './CustomSelect';
 
-const Controls = ({ onSearch }: any) => {
+type ControlsType = {
+	onSearch: (search: string, regionValue: string) => void
+}
+
+const Controls: React.FC<ControlsType> = ({ onSearch }) => {
 	const [search, setSearch] = useState('');
 	const [region, setRegion] = useState<OptionType | null>();
-	console.log(region)
+
 	useEffect(() => {
 		const regionValue = region?.value || '';
 
 		onSearch(search, regionValue);
+		// eslint-disable-next-line
 	}, [search, region])
 
 	return (

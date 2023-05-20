@@ -3,22 +3,34 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { filterByCode } from '../config';
 
-// type InfoPropsType = {
-// 	name:string,
-// 	nativeName:string,
-// 	flag:string,
-// 	capital:string,
-// 	population:number,
-// 	region:string,
-// 	subregion:string,
-// 	topLevelDomain,
-// 	currencies = [],
-// 	languages = [],
-// 	borders = [],
-// 	navigate
-// }
+type CurrenciesType = {
+	code: string,
+	name: string
+}
+type LanguagesType = {
+	name: string
+}
+export type CountryType = {
+	name: string,
+	nativeName: string,
+	flag: string,
+	capital: string,
+	population: number,
+	region: string,
+	subregion: string,
+	topLevelDomain: string[],
+	currencies: CurrenciesType[],
+	languages: LanguagesType[],
+	borders?: string[]
+}
+interface InfoPropsType extends CountryType {
+	navigate: (name: string) => void
+}
+type BordersType = {
+	name: string
+}
 
-const Info = (props: any) => {
+const Info: React.FC<InfoPropsType> = (props) => {
 	const {
 		name,
 		nativeName,
@@ -37,9 +49,9 @@ const Info = (props: any) => {
 	const [neighbors, setNeighbors] = useState([]);
 
 	useEffect(() => {
-		axios.get(filterByCode(borders)).then(({ data }) => setNeighbors(data.map((c: any) => c.name)))
+		axios.get(filterByCode(borders)).then(({ data }) => setNeighbors(data.map((c: BordersType) => c.name)))
 	}, [borders])
-	console.log(topLevelDomain)
+
 	return (
 
 		<section className='info__wrapper'>
@@ -71,16 +83,16 @@ const Info = (props: any) => {
 					</ul>
 					<ul className="info__list">
 						<li className="info__item">
-							<span className="info__item-title">Capital: </span>
-							{topLevelDomain.map((d: any) => (<span key={d}> {d} </span>))}
+							<span className="info__item-title">Top Level Domain: </span>
+							{topLevelDomain.map((d) => (<span key={d}> {d} </span>))}
 						</li>
 						<li className="info__item">
-							<span className="info__item-title">Capital: </span>
-							{currencies.map((c: any) => (<span key={c.code}> {c.name} </span>))}
+							<span className="info__item-title">Currency: </span>
+							{currencies.map((c) => (<span key={c.code}> {c.name} </span>))}
 						</li>
 						<li className="info__item">
-							<span className="info__item-title">Capital: </span>
-							{languages.map((l: any) => (<span key={l.name}> {l.name} </span>))}
+							<span className="info__item-title">Languages: </span>
+							{languages.map((l) => (<span key={l.name}> {l.name} </span>))}
 						</li>
 					</ul>
 				</div>
@@ -90,7 +102,7 @@ const Info = (props: any) => {
 						<span>There is no border countries</span>
 					) : (
 						<div className="info__tag-group">
-							{neighbors.map((b: any) => (
+							{neighbors.map((b) => (
 								<div className='info__tag' key={b} onClick={() => navigate(`/country/${b}`)}>
 									{b}
 								</div>

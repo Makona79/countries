@@ -1,6 +1,17 @@
 import React from 'react'
 
-const Card = ({ img, name, info = [], onClick }: any) => {
+type InfoType = {
+	title: string,
+	description: string
+}
+type CardPropsType = {
+	img: string,
+	name: string,
+	info: InfoType[],
+	onClick: () => void
+}
+
+const Card: React.FC<CardPropsType> = ({ img, name, info = [], onClick }) => {
 
 	return (
 
@@ -11,7 +22,7 @@ const Card = ({ img, name, info = [], onClick }: any) => {
 			<div className="article__body">
 				<h3 className="article__title">{name}</h3>
 				<ul className="article__list">
-					{info.map((el: any) => (
+					{info.map((el) => (
 						<li key={el.title} className="article__item">
 							<span className="article__item-title">{el.title}: </span>
 							<span> {el.description}</span>

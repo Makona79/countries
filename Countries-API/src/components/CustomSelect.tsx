@@ -1,7 +1,7 @@
 import React from 'react'
-import Select from 'react-select'
+import Select, { StylesConfig } from 'react-select'
 
-const options = [
+const options: OptionType[] = [
 	{ value: 'Africa', label: 'Africa' },
 	{ value: 'America', label: 'America' },
 	{ value: 'Asia', label: 'Asia' },
@@ -15,14 +15,14 @@ export type OptionType = {
 }
 
 type CustomSelectType = {
-	region: OptionType | null,
+	region?: OptionType | null,
 	setRegion: (value: OptionType) => void
 }
 
-const CustomSelect = ({ region, setRegion }: CustomSelectType) => {
+const CustomSelect: React.FC<CustomSelectType> = ({ region, setRegion }) => {
 
-	const customStyle = {
-		control: (base: any) => ({
+	const customStyle: StylesConfig<OptionType> = {
+		control: (base) => ({
 			...base,
 			backgroundColor: 'var(--colors-ui-base)',
 			color: 'var(--colors-text)',
@@ -33,7 +33,7 @@ const CustomSelect = ({ region, setRegion }: CustomSelectType) => {
 			height: '50px',
 			width: '200px',
 		}),
-		option: (base: any, state: any) => ({
+		option: (base, state) => ({
 			...base,
 			cursor: 'pointer',
 			color: 'var(--colors-text)',
@@ -41,20 +41,23 @@ const CustomSelect = ({ region, setRegion }: CustomSelectType) => {
 				? 'var(--colors-bg)'
 				: 'var(--colors-ui-base)',
 		}),
-		singleValue: (base: any) => ({ ...base, color: 'var(--colors-text)' }),
-		menu: (base: any) => ({ ...base, backgroundColor: 'transparent' }),
-		menuList: (base: any) => ({
+		singleValue: (base) => ({ ...base, color: 'var(--colors-text)' }),
+		menu: (base) => ({ ...base, backgroundColor: 'transparent' }),
+		menuList: (base) => ({
 			...base, padding: '0',
 			borderRadius: 'var(--radii)',
 		}),
-		input: (base: any) => ({ ...base, caretColor: 'transparent' }),
-
+		input: (base) => ({ ...base, caretColor: 'transparent' })
 	}
 
+	const handleChange = (option?: any) => {
+		setRegion(option)
+	};
+	// (option: any) => setRegion(option)
 	return (
 		< Select options={options}
 			placeholder="Filter by Region"
-			onChange={(option: any) => setRegion(option)}
+			onChange={handleChange}
 			value={region}
 			styles={customStyle}
 		// menuIsOpen
