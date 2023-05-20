@@ -1,4 +1,4 @@
-@import-normalize;
+/* @import-normalize; */
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
 * {
@@ -89,7 +89,10 @@ body {
 .wrapper {
 	padding: 2rem 0;
 
-	@media (min-width: 767px) {
+}
+
+@media (min-width: 767px) {
+	.wrapper {
 		padding: 4rem 0;
 	}
 }
