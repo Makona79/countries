@@ -13,7 +13,7 @@ const Header = () => {
 		<header className='header'>
 			<div className='container'>
 				<div className="header__wrapper">
-					<Link to="https://makona79.github.io/countries/" className='title-link'>
+					<Link to="/" className='title-link'>
 						<h2 className="title">Where is the world?</h2>
 					</Link>
 					<div className="modeswitcher" onClick={toggleTheme}>

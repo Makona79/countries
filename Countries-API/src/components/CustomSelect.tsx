@@ -16,7 +16,8 @@ export type OptionType = {
 
 type CustomSelectType = {
 	region?: OptionType | null,
-	setRegion: (value: MultiValue<OptionType> | SingleValue<OptionType>) => void
+	// setRegion: (option: MultiValue<OptionType> | SingleValue<OptionType>) => void
+	setRegion: any
 }
 
 const CustomSelect: React.FC<CustomSelectType> = ({ region, setRegion }) => {

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { PropsChildren } from './Main'
 
 const List = ({ children }: PropsChildren) => {
