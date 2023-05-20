@@ -1,5 +1,5 @@
 import React from 'react'
-import Select, { StylesConfig } from 'react-select'
+import Select, { MultiValue, SingleValue, StylesConfig } from 'react-select'
 
 const options: OptionType[] = [
 	{ value: 'Africa', label: 'Africa' },
@@ -16,7 +16,7 @@ export type OptionType = {
 
 type CustomSelectType = {
 	region?: OptionType | null,
-	setRegion: (value: OptionType) => void
+	setRegion: (value: MultiValue<OptionType> | SingleValue<OptionType>) => void
 }
 
 const CustomSelect: React.FC<CustomSelectType> = ({ region, setRegion }) => {
@@ -50,10 +50,10 @@ const CustomSelect: React.FC<CustomSelectType> = ({ region, setRegion }) => {
 		input: (base) => ({ ...base, caretColor: 'transparent' })
 	}
 
-	const handleChange = (option?: any) => {
-		setRegion(option)
+	const handleChange = (option: MultiValue<OptionType> | SingleValue<OptionType>) => {
+		setRegion(option);
 	};
-	// (option: any) => setRegion(option)
+
 	return (
 		< Select options={options}
 			placeholder="Filter by Region"
