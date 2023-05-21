@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom"
 
 const NotFound = () => {
 	return (
-		<div>This page doesn't exist</div>
+		<div>
+			<Link to="/" className='title-link'>
+				<h2 className="title">Where is the world?</h2>
+			</Link>
+		</div>
 	)
 }
 
