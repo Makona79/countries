@@ -10,17 +10,15 @@ import NotFound from './pages/NotFound';
 function App() {
 	const [countries, setCountries] = useState<CountriesType[]>([]);
 
-
 	return (
 		<>
 			<Header />
 			<Main>
 				<Routes>
-					<Route path="/countries/" element={<Homepage countries={countries} setCountries={setCountries} />} />
-					<Route path="/countries/country/:name" element={<Detailes />} />
-					<Route path="/countries/*" element={<NotFound />} />
+					<Route path="/" element={<Homepage countries={countries} setCountries={setCountries} />} />
+					<Route path="/country/:name" element={<Detailes />} />
+					<Route path="*" element={<NotFound />} />
 				</Routes>
-
 			</Main>
 		</>
 	)
