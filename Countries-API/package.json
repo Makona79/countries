@@ -3,14 +3,14 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
-	"homepage": "https://Makona79.github.io/countries",
+	"homepage": "https://Makona79.github.io/countries-dev",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build"
+		"deploy": "gh-pages -d dist"
 	},
 	"dependencies": {
 		"axios": "^1.4.0",
