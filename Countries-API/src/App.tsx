@@ -16,9 +16,9 @@ function App() {
 			<Header />
 			<Main>
 				<Routes>
-					<Route path="/" element={<Homepage countries={countries} setCountries={setCountries} />} />
-					<Route path="/country/:name" element={<Detailes />} />
-					<Route path="*" element={<NotFound />} />
+					<Route path="/countries-dev/" element={<Homepage countries={countries} setCountries={setCountries} />} />
+					<Route path="/countries-dev/country/:name" element={<Detailes />} />
+					<Route path="/countries-dev/*" element={<NotFound />} />
 				</Routes>
 
 			</Main>
